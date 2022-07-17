@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EmployeesManager.DAL\EmployeesManager.DAL.csproj" />
+    <ProjectReference Include="..\EmployeesManager.Domain\EmployeesManager.Domain.csproj" />
   </ItemGroup>
 
 </Project>

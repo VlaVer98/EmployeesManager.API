@@ -12,6 +12,7 @@ namespace EmployeesManager.DAL.Contracts.Repositories {
         TEntity FindNoTracking(Expression<Func<TEntity, bool>> expr, params Expression<Func<TEntity, object>>[] inclusions);
         TEntity FindTracking(Expression<Func<TEntity, bool>> expr, params Expression<Func<TEntity, object>>[] inclusions);
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> expression, bool tracking = false);
+        ICollection<TEntity> GetAll(bool tracking = false);
         IEnumerable<TEntity> Update(IEnumerable<TEntity> items);
         TEntity Update(TEntity item);
     }

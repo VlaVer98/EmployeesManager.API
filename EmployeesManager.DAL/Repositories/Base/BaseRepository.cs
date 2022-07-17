@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 
 namespace EmployeesManager.DAL.Repositories.Base {
-    abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class {
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class {
         protected DbSet<TEntity> _data;
         protected EmployeesManagerDbContext _context;
 
@@ -24,6 +24,11 @@ namespace EmployeesManager.DAL.Repositories.Base {
             }
 
             return data;
+        }
+
+        public ICollection<TEntity> GetAll(bool tracking = false) {
+            var data = Get(tracking);
+            return data.ToArray();
         }
 
         public virtual TEntity FindById(Guid id) {
