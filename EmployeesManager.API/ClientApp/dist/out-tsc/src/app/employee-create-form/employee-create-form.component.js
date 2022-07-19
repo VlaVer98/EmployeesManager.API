@@ -1,0 +1,48 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { Component, Injectable } from '@angular/core';
+import { TodosService } from '../Services/employee.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+let EmployeeCreateFormComponent = class EmployeeCreateFormComponent {
+    constructor(todosService, modalService) {
+        this.todosService = todosService;
+        this.modalService = modalService;
+    }
+    ngOnInit() {
+    }
+    open(create, callback) {
+        this.employee = {
+            birthday: new Date(),
+            department: "",
+            employmentDate: null,
+            firstName: "",
+            id: "",
+            lastName: "",
+            patronymic: "",
+            wage: null
+        };
+        this.modalService.open(create, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+            this.employee.birthday = new Date(`${this.employee.birthday['year']}-${this.employee.birthday['month'].toString().padStart(2, 0)}-${this.employee.birthday['day'].toString().padStart(2, 0)}`);
+            this.employee.employmentDate = new Date(`${this.employee.employmentDate['year']}-${this.employee.employmentDate['month'].toString().padStart(2, 0)}-${this.employee.employmentDate['day'].toString().padStart(2, 0)}`);
+            this.todosService.create(this.employee, callback);
+        }, (reason) => {
+        });
+    }
+};
+EmployeeCreateFormComponent = __decorate([
+    Component({
+        selector: 'app-employee-create-form',
+        templateUrl: './employee-create-form.component.html'
+    }),
+    Injectable({ providedIn: 'root' }),
+    __metadata("design:paramtypes", [TodosService, NgbModal])
+], EmployeeCreateFormComponent);
+export { EmployeeCreateFormComponent };
+//# sourceMappingURL=employee-create-form.component.js.map

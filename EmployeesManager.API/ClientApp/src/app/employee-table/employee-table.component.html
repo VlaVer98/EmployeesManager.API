@@ -1,0 +1,132 @@
+<h1 id="tableLabel">Employees</h1>
+<button class="btn btn-primary m-1" (click)="employeeCreateFormComponent.open(create, rerenderCallback)">Create</button>
+
+<p *ngIf="!todosService.employees"><em>Loading...</em></p>
+
+<table datatable [dtTrigger]="dtTrigger" class='table table-striped' aria-labelledby="tableLabel" *ngIf="todosService.employees">
+    <thead>
+        <tr>
+            <th>Department</th>
+            <th>Full name</th>
+            <th>Birthday</th>
+            <th>Employment date</th>
+            <th>Wage</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of todosService.employees">
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.lastName }} {{ employee.firstName }} {{ employee.patronymic }}</td>
+            <td>{{ employee.birthday }}</td>
+            <td>{{ employee.employmentDate }}</td>
+            <td>{{ employee.wage }}</td>
+            <td>
+                <button type="button" (click)="employeeUpdateFormComponent.open(update, employee, rerenderCallback)" class="btn btn-success btn-sm m-1">Update</button>
+                <button type="button" (click)="confirmDelete(employee.id)" class="btn btn-danger btn-sm m-1">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #create let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Create update</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"><i class="bi bi-x"></i></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <label for="FirstName">FirstName</label>
+                <div class="input-group">
+                    <input id="FirstName" [(ngModel)]="employeeCreateFormComponent.employee.firstName" name="FirstName" class="form-control" placeholder="FirstName">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="LastName">LastName</label>
+                <div class="input-group">
+                    <input id="LastName" [(ngModel)]="employeeCreateFormComponent.employee.lastName" name="LastName" class="form-control" placeholder="LastName">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Patronymic">Patronymic</label>
+                <div class="input-group">
+                    <input id="Patronymic" [(ngModel)]="employeeCreateFormComponent.employee.patronymic" name="Patronymic" class="form-control" placeholder="Patronymic">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Department">Department</label>
+                <div class="input-group">
+                    <input id="Department" [(ngModel)]="employeeCreateFormComponent.employee.department" name="Department" class="form-control" placeholder="department">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Birthday">Date of birth</label>
+                <div class="input-group">
+                    <input id="Birthday" [(ngModel)]="employeeCreateFormComponent.employee.birthday" name="Birthday" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #dp="ngbDatepicker">
+                    <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"><i class="bi bi-calendar"></i></button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="EmploymentDate">Employment date</label>
+                <div class="input-group">
+                    <input id="EmploymentDate" [(ngModel)]="employeeCreateFormComponent.employee.employmentDate" name="EmploymentDate" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #dp2="ngbDatepicker">
+                    <button class="btn btn-outline-secondary calendar" (click)="dp2.toggle()" type="button"><i class="bi bi-calendar"></i></button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Wage">Wage</label>
+                <div class="input-group">
+                    <input id="Wage" type="number" [(ngModel)]="employeeCreateFormComponent.employee.wage" name="Wage" class="form-control" placeholder="0">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+    </div>
+</ng-template>
+
+<ng-template #update let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"><i class="bi bi-x"></i></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <label for="FirstName">FirstName</label>
+                <div class="input-group">
+                    <input id="FirstName" [(ngModel)]="employeeUpdateFormComponent.employee.firstName" name="FirstName" class="form-control" placeholder="FirstName">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="LastName">LastName</label>
+                <div class="input-group">
+                    <input id="LastName" [(ngModel)]="employeeUpdateFormComponent.employee.lastName" name="LastName" class="form-control" placeholder="LastName">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Patronymic">Patronymic</label>
+                <div class="input-group">
+                    <input id="Patronymic" [(ngModel)]="employeeUpdateFormComponent.employee.patronymic" name="Patronymic" class="form-control" placeholder="Patronymic">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Department">Department</label>
+                <div class="input-group">
+                    <input id="Department" [(ngModel)]="employeeUpdateFormComponent.employee.department" name="Department" class="form-control" placeholder="department">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Wage">Wage</label>
+                <div class="input-group">
+                    <input id="Wage" type="number" [(ngModel)]="employeeUpdateFormComponent.employee.wage" name="Wage" class="form-control" placeholder="0">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+    </div>
+</ng-template>
