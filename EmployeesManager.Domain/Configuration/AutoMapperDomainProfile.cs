@@ -2,9 +2,12 @@
 using EmployeesManager.DAL.Entities;
 using EmployeesManager.Domain.Models.DTOs.Employee;
 
-namespace EmployeesManager.Domain.Configuration {
-    public class AutoMapperDomainProfile : Profile {
-        public AutoMapperDomainProfile() {
+namespace EmployeesManager.Domain.Configuration
+{
+    public class AutoMapperDomainProfile : Profile
+    {
+        public AutoMapperDomainProfile()
+        {
             CreateMap<EmployeeDto, Employee>()
                 .ReverseMap();
             CreateMap<CreateEmployeeDto, Employee>()

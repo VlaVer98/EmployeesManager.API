@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace EmployeesManager.Domain.Models.DTOs.Employee {
-    public class CreateEmployeeDto {
+namespace EmployeesManager.Domain.Models.DTOs.Employee
+{
+    public class CreateEmployeeDto
+    {
         public string Department { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

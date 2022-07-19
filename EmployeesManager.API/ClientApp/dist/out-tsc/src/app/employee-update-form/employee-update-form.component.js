@@ -19,12 +19,11 @@ let EmployeeUpdateFormComponent = class EmployeeUpdateFormComponent {
     }
     ngOnInit() {
     }
-    open(update, employee) {
+    open(update, employee, callback) {
         this.employee = employee;
+        console.log(update);
         this.modalService.open(update, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.employee.birthday = new Date(`${this.employee.birthday['year']}-${this.employee.birthday['month'].toString().padStart(2, 0)}-${this.employee.birthday['day'].toString().padStart(2, 0)}`);
-            this.employee.employmentDate = new Date(`${this.employee.employmentDate['year']}-${this.employee.employmentDate['month'].toString().padStart(2, 0)}-${this.employee.employmentDate['day'].toString().padStart(2, 0)}`);
-            this.todosService.update(this.employee);
+            this.todosService.update(this.employee, callback);
         }, (reason) => {
         });
     }

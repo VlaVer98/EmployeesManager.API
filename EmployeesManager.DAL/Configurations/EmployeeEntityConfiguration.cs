@@ -2,9 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EmployeesManager.DAL.Configurations {
-    public class EmployeeEntityConfiguration : IEntityTypeConfiguration<Employee> {
-        public void Configure(EntityTypeBuilder<Employee> builder) {
+namespace EmployeesManager.DAL.Configurations
+{
+    public class EmployeeEntityConfiguration : IEntityTypeConfiguration<Employee>
+    {
+        public void Configure(EntityTypeBuilder<Employee> builder)
+        {
             builder.ToTable("Employees");
 
             builder.Property(x => x.FirstName)

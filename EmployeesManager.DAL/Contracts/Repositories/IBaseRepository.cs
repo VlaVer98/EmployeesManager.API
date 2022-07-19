@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace EmployeesManager.DAL.Contracts.Repositories {
-    public interface IBaseRepository<TEntity> where TEntity : class {
+namespace EmployeesManager.DAL.Contracts.Repositories
+{
+    public interface IBaseRepository<TEntity> where TEntity : class
+    {
         IEnumerable<TEntity> Add(IEnumerable<TEntity> items);
         TEntity Add(TEntity item);
         IEnumerable<TEntity> Delete(IEnumerable<TEntity> items);

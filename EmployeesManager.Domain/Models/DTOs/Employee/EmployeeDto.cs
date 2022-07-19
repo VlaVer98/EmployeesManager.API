@@ -1,8 +1,10 @@
 ﻿using EmployeesManager.Domain.Models.DTOs.Base;
 using System;
 
-namespace EmployeesManager.Domain.Models.DTOs.Employee {
-    public class EmployeeDto : BaseEntityDto<Guid> {
+namespace EmployeesManager.Domain.Models.DTOs.Employee
+{
+    public class EmployeeDto : BaseEntityDto<Guid>
+    {
         public string Department { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

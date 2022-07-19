@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace EmployeesManager.API.Models.Requests {
-    public class UpdateEmployeeRequest {
+namespace EmployeesManager.API.Models.Requests
+{
+    public class UpdateEmployeeRequest
+    {
         public Guid Id { get; set; }
         public string Department { get; set; }
         public string FirstName { get; set; }

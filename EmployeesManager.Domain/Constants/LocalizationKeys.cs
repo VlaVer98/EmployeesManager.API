@@ -1,5 +1,7 @@
-﻿namespace EmployeesManager.Domain.Constants {
-    public static class LocalizationKeys {
+﻿namespace EmployeesManager.Domain.Constants
+{
+    public static class LocalizationKeys
+    {
         // Common
         public const string ENTRY_NOT_FOUND = "ENTRY_NOT_FOUND";
         public const string ENTRY_REMOVE_SUCCESS = "ENTRY_REMOVE_SUCCESS";

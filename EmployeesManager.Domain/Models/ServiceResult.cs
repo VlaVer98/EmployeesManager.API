@@ -1,31 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EmployeesManager.Domain.Models {
-    public class ServiceResult {
+namespace EmployeesManager.Domain.Models
+{
+    public class ServiceResult
+    {
         public bool IsSuccessful { get; set; }
         public IList<string> Errors { get; set; } = new List<string>();
         public string Message { get; set; }
 
         public ServiceResult() { }
 
-        public ServiceResult(bool isSuccessful) {
+        public ServiceResult(bool isSuccessful)
+        {
             IsSuccessful = isSuccessful;
             Message = string.Empty;
         }
 
         public ServiceResult(bool isSuccessful, string message)
-            : this(isSuccessful) {
+            : this(isSuccessful)
+        {
             Message = message;
         }
 
-        public ServiceResult(IList<string> errors) {
+        public ServiceResult(IList<string> errors)
+        {
             IsSuccessful = false;
             Errors = errors;
         }
     }
 
-    public class ServiceResult<T> : ServiceResult {
+    public class ServiceResult<T> : ServiceResult
+    {
         public T Data { get; set; }
 
         public ServiceResult() { }
@@ -34,11 +40,13 @@ namespace EmployeesManager.Domain.Models {
 
         public ServiceResult(bool isSuccessful, string message) : base(isSuccessful, message) { }
 
-        public ServiceResult(bool isSuccessful, string message, T data) : base(isSuccessful, message) {
+        public ServiceResult(bool isSuccessful, string message, T data) : base(isSuccessful, message)
+        {
             Data = data;
         }
 
-        public ServiceResult(T data) {
+        public ServiceResult(T data)
+        {
             IsSuccessful = true;
             Data = data;
         }

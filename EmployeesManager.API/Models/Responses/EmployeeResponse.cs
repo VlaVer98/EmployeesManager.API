@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace EmployeesManager.API.Models.Responses {
-    public class EmployeeResponse {
+namespace EmployeesManager.API.Models.Responses
+{
+    public class EmployeeResponse
+    {
         public Guid Id { get; set; }
         public string Department { get; set; }
         public string FirstName { get; set; }

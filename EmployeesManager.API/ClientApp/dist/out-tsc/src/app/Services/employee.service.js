@@ -35,11 +35,13 @@ let TodosService = class TodosService {
             }
         }, error => console.error(error));
     }
-    update(employee) {
+    update(employee, callback) {
         this.http.put(this._baseUrl + 'api/Employee', employee).subscribe(result => {
             if (result.isSuccessful) {
+                this.employees = this.employees.filter(t => t.id !== result.result.id);
                 this.employees.push(result.result);
             }
+            callback();
         }, error => console.error(error));
     }
     delete(id, callback) {

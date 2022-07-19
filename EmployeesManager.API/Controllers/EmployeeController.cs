@@ -8,35 +8,41 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
-namespace EmployeesManager.API.Controllers {
+namespace EmployeesManager.API.Controllers
+{
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : BaseController {
+    public class EmployeeController : BaseController
+    {
         protected readonly IEmployeeService _employeeService;
 
         public EmployeeController(
             IMapper mapper,
-            IEmployeeService employeeService) 
-            : base(mapper) {
+            IEmployeeService employeeService)
+            : base(mapper)
+        {
             _employeeService = employeeService;
         }
 
         [HttpGet]
-        public WrapperResponse<IEnumerable<EmployeeResponse>> Get() {
+        public WrapperResponse<IEnumerable<EmployeeResponse>> Get()
+        {
             var serviceResult = _employeeService.GetAll();
 
             return Success<IEnumerable<EmployeeResponse>, IEnumerable<EmployeeDto>>(serviceResult);
         }
 
         [HttpGet("{id}")]
-        public WrapperResponse<EmployeeResponse> Get(Guid id) {
+        public WrapperResponse<EmployeeResponse> Get(Guid id)
+        {
             var serviceResult = _employeeService.Get(id);
 
             return Success<EmployeeResponse, EmployeeDto>(serviceResult);
         }
 
         [HttpPost]
-        public WrapperResponse<EmployeeResponse> Post([FromBody] CreateEmployeeRequest model) {
+        public WrapperResponse<EmployeeResponse> Post([FromBody] CreateEmployeeRequest model)
+        {
             var dto = _mapper.Map<CreateEmployeeDto>(model);
             var serviceResult = _employeeService.Create(dto);
 
@@ -44,7 +50,8 @@ namespace EmployeesManager.API.Controllers {
         }
 
         [HttpPut]
-        public WrapperResponse<EmployeeResponse> Put([FromBody] UpdateEmployeeRequest model) {
+        public WrapperResponse<EmployeeResponse> Put([FromBody] UpdateEmployeeRequest model)
+        {
             var dto = _mapper.Map<UpdateEmployeeDto>(model);
             var serviceResult = _employeeService.Update(dto);
 
@@ -52,7 +59,8 @@ namespace EmployeesManager.API.Controllers {
         }
 
         [HttpDelete("{id}")]
-        public WrapperResponse<EmployeeResponse> Delete(Guid id) {
+        public WrapperResponse<EmployeeResponse> Delete(Guid id)
+        {
             var serviceResult = _employeeService.Delete(id);
 
             return Success<EmployeeResponse>(serviceResult);

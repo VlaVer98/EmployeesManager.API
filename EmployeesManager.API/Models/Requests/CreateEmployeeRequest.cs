@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace EmployeesManager.API.Models.Requests {
-    public class CreateEmployeeRequest {
+namespace EmployeesManager.API.Models.Requests
+{
+    public class CreateEmployeeRequest
+    {
         public string Department { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -44,6 +44,11 @@ let EmployeeTableComponent = class EmployeeTableComponent {
             this.dtTrigger.next();
         });
     }
+    confirmDelete(id) {
+        if (confirm('Are you sure you want to delete this?')) {
+            this.todosService.delete(id, this.rerenderCallback);
+        }
+    }
 };
 __decorate([
     ViewChild(DataTableDirective, { static: false }),
